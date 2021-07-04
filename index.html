@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="text/javascript">
+      var count = 0;
+      var Player1='';
+      var Player2='';
+      function player(){
+        Player1 = document.getElementById('player1').value
+        Player2 = document.getElementById('player2').value
+      }
+      function check(id){
+        if (document.getElementById(id).innerText === ''){
+          if (count % 2 === 0){
+            document.getElementById(id).innerText = 'X';
+            document.getElementById(id).style.backgroundColor = '#fac5c5'
+            count += 1;
+            checker();
+          }
+          else{
+            document.getElementById(id).innerText = 'O';
+            document.getElementById(id).style.backgroundColor = '#c3fadc'
+            count += 1;
+            checker();
+          }
+        }
+      }
+      function checker(){
+        const player = checking()
+        if (player === 'X'){
+            document.getElementById('winner').innerText = ("Congratulations "+Player1+" (Player X)")
+        }
+        else if (player === 'O'){
+            document.getElementById('winner').innerText = ("Congratulations "+Player2+" (Player O)")}
+        else if (count === 9){
+            document.getElementById('winner').innerText = ("No Winner!")
+        }
+      }
+      function checking(){
+        if (document.getElementById('cell1').innerText !== '' && document.getElementById('cell2').innerText !== '' && document.getElementById('cell3').innerText !== '' && document.getElementById('cell1').innerText === document.getElementById('cell2').innerText && document.getElementById('cell3').innerText === document.getElementById('cell2').innerText && document.getElementById('cell3').innerText === document.getElementById('cell1').innerText) {return(document.getElementById('cell1').innerText)}
+        else if (document.getElementById('cell4').innerText !== '' && document.getElementById('cell5').innerText !== '' && document.getElementById('cell6').innerText !== '' && document.getElementById('cell4').innerText === document.getElementById('cell5').innerText && document.getElementById('cell6').innerText === document.getElementById('cell5').innerText && document.getElementById('cell6').innerText === document.getElementById('cell4').innerText) {return(document.getElementById('cell4').innerText)}
+        else if (document.getElementById('cell7').innerText !== '' && document.getElementById('cell8').innerText !== '' && document.getElementById('cell9').innerText !== '' && document.getElementById('cell7').innerText === document.getElementById('cell8').innerText && document.getElementById('cell9').innerText===document.getElementById('cell8').innerText && document.getElementById('cell9').innerText === document.getElementById('cell7').innerText) {return(document.getElementById('cell7').innerText)}
+        else if (document.getElementById('cell1').innerText !== '' && document.getElementById('cell4').innerText !== '' && document.getElementById('cell7').innerText !== '' && document.getElementById('cell1').innerText === document.getElementById('cell4').innerText && document.getElementById('cell7').innerText===document.getElementById('cell4').innerText && document.getElementById('cell7').innerText === document.getElementById('cell1').innerText) {return(document.getElementById('cell1').innerText)}
+        else if (document.getElementById('cell2').innerText !== '' && document.getElementById('cell5').innerText !== '' && document.getElementById('cell8').innerText !== '' && document.getElementById('cell2').innerText === document.getElementById('cell5').innerText && document.getElementById('cell8').innerText===document.getElementById('cell5').innerText && document.getElementById('cell8').innerText === document.getElementById('cell2').innerText) {return(document.getElementById('cell2').innerText)}
+        else if (document.getElementById('cell3').innerText !== '' && document.getElementById('cell6').innerText !== '' && document.getElementById('cell9').innerText !== '' && document.getElementById('cell3').innerText === document.getElementById('cell6').innerText && document.getElementById('cell9').innerText===document.getElementById('cell6').innerText && document.getElementById('cell9').innerText === document.getElementById('cell3').innerText) {return(document.getElementById('cell3').innerText)}
+        else if (document.getElementById('cell1').innerText !== '' && document.getElementById('cell5').innerText !== '' && document.getElementById('cell9').innerText !== '' && document.getElementById('cell1').innerText === document.getElementById('cell5').innerText && document.getElementById('cell9').innerText===document.getElementById('cell5').innerText && document.getElementById('cell9').innerText === document.getElementById('cell1').innerText)  {return(document.getElementById('cell1').innerText)}
+        else if (document.getElementById('cell7').innerText !== '' && document.getElementById('cell5').innerText !== '' && document.getElementById('cell3').innerText !== '' && document.getElementById('cell7').innerText === document.getElementById('cell5').innerText && document.getElementById('cell3').innerText===document.getElementById('cell5').innerText && document.getElementById('cell3').innerText === document.getElementById('cell7').innerText) {return(document.getElementById('cell7').innerText)}
+      }
+    </script>
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <body>
+    <center>
+        <h1 id='heading'>Welcome to Tic-Tac-Toe Game</h1>
+        <div id="title">
+          <label>Player 1 :</label>
+          <input id='player1' type="text" name='Player1' placeholder="Player1" onchange='player()'/>
+          <label>- 'X'</label><br/>
+          <label>Player 2 :</label>
+          <input id='player2' type="text" name='Player2' placeholder="Player2" onchange='player()'/>
+          <label>- 'O'</label>
+        </div>
+        <table >
+          <tbody>
+            <tr>
+              <td id='cell1' onclick=check('cell1')></td>
+              <td id='cell2' onclick=check('cell2')></td>
+              <td id='cell3' onclick=check('cell3')></td>
+            </tr>
+            <tr>
+              <td id='cell4' onclick=check('cell4')></td>
+              <td id='cell5' onclick=check('cell5')></td>
+              <td id='cell6' onclick=check('cell6')></td>
+            </tr>
+            <tr>
+              <td id='cell7' onclick=check('cell7')></td>
+              <td id='cell8' onclick=check('cell8')></td>
+              <td id='cell9' onclick=check('cell9')></td>
+            </tr>
+          </tbody>
+        </table>
+        <h1 id='winner'></h1>
+      </center>
+  </body>
+</html>
